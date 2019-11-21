@@ -12,16 +12,20 @@ namespace NovemberProjektet
 
         public Offspring()
         {
-            _gender = (Monster.Genders)generator.Next(1);
-            _type = (Monster.Types)generator.Next(2);
-            _color = (Monster.Colors)generator.Next(2);
-            _pattern = (Monster.Patterns)generator.Next(2);
+            _gender = 0;
+            _type = 0;
+            _color = 0;
+            _pattern = 0;
 
-            _genes = new int[4] { (int)_gender, (int)_type, (int)_color, (int)_pattern }; //(int) indikerar att enum skall konverteras till int
+            _genes = new int[4];
         }
 
-        public void GetGenes()
+        public void GetTraits()
         {
+            _gender = (Monster.Genders)_genes[0];
+            _type = (Monster.Types)_genes[1];
+            _color = (Monster.Colors)_genes[2];
+            _pattern = (Monster.Patterns)_genes[3];
 
         }
     }

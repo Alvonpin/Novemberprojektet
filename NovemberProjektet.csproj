@@ -45,6 +45,7 @@
     <Compile Include="Ancestor.cs" />
     <Compile Include="Costumer.cs" />
     <Compile Include="Monster.cs" />
+    <Compile Include="MonsterManager.cs" />
     <Compile Include="Offspring.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -22,8 +22,6 @@ namespace NovemberProjektet
 
         protected int[] _genes;
 
-        protected static Random generator = new Random();
-
         public string Name
         {
             get { return _name; }
@@ -37,28 +35,6 @@ namespace NovemberProjektet
 
         }
 
-        public Monster Breed(Monster male, Monster female)
-        {
-            Offspring child = new Offspring();
-
-            for (int i = 0; i < male._genes.Length; i++)
-            {
-                int chanse = generator.Next(1);
-
-                if (generator.Next(1) == 0)
-                {
-                    child._genes[i] = male._genes[i];
-                }
-
-                else
-                {
-                    child._genes[i] = female._genes[i];
-                }
-            }
-
-            return child;
-        }
-
         public void PrintName()
         {
             Console.WriteLine(_name);
@@ -66,7 +42,10 @@ namespace NovemberProjektet
 
         public void PrintAttributes()
         {
-
+            for (int i = 0; i < _genes.Length; i++)
+            {
+                Console.WriteLine(_genes[i]);
+            }
         }
     }
 }

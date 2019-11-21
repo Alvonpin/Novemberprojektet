@@ -8,29 +8,27 @@ namespace NovemberProjektet
 {
     class Program
     {
-
-        static List<Monster> Monsters;
+        public static Random Generator = new Random();
 
         static void Main(string[] args)
         {
-            Monsters = new List<Monster>();
 
-            Monsters.AddRange(new Ancestor[]
-            { new Ancestor("Adam", Monster.Genders.male),
-              new Ancestor("Eve", Monster.Genders.female),
-              new Ancestor("Samuel", Monster.Genders.male),
-              new Ancestor("Lilith", Monster.Genders.female)});
+            MonsterManager.CreateAncestors();
 
+            Console.WriteLine("Select a male");
+            Monster male = MonsterManager.ChooseMonster(Console.ReadLine());
 
+            male.PrintAttributes();
 
-            Console.WriteLine("Select a two monsters. Type the female monsters name, blanskspace, the male monsters name.");
+            Console.WriteLine("Select a female");
+            Monster female = MonsterManager.ChooseMonster(Console.ReadLine());
 
-            for (int i = 0; i < Monsters.Count; i++)
-            {
-                Monsters[i].PrintName();
-            }
+            female.PrintAttributes();
 
-            //Monster.Breed();
+            Monster child = MonsterManager.Breed(male, female);
+
+            child.PrintAttributes();
+
             Console.ReadLine();
 
 

@@ -16,9 +16,12 @@ namespace NovemberProjektet
             //_gender = Monster.Gender.male; inebär att gender är male.
 
             _gender = gender;
-            _type = (Monster.Types)generator.Next(2);
-            _color = (Monster.Colors)generator.Next(2);
-            _pattern = (Monster.Patterns)generator.Next(2);
+            _type = (Monster.Types)Program.Generator.Next(3);
+            _color = (Monster.Colors)Program.Generator.Next(3);
+            _pattern = (Monster.Patterns)Program.Generator.Next(3);
+
+            _genes = new int[4] { (int)_gender, (int)_type, (int)_color, (int)_pattern }; //(int) indikerar att enum skall konverteras till int
+
         }
     }
 }
