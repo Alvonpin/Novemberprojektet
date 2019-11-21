@@ -6,41 +6,63 @@ using System.Threading.Tasks;
 
 namespace NovemberProjektet
 {
-    class Monster
+    abstract class Monster  //En abstrakt klass kan inte skapa konstruktorer själv, men kan ärvas av
     { 
         public enum Genders { male,female };
         public enum Types { bird,reptile,mammal };
         public enum Colors { red,blue,yellow };
         public enum Patterns { striped,pied,none };
 
-        private int _id;
-        private string name;
-        private Genders _gender;
-        private Types _type;
-        private Colors _color;
-        private Patterns _pattern;
+        protected int _id;
+        protected string _name;
+        protected Genders _gender;
+        protected Types _type;
+        protected Colors _color;
+        protected Patterns _pattern;
 
-        private int[] _genes;
-        private string[] _family;
+        protected int[] _genes;
 
-        static Random generator = new Random();
+        protected static Random generator = new Random();
 
-        public Monster(Genders gender)
+        public string Name
         {
-            //_gender = (Monster.Gender)1; konverterar int till Gender och indikerar att gender är male.
-            //_gender = Monster.Gender.male; inebär att gender är male.
-
-            _gender = (Monster.Genders)gender;
-            _type = (Monster.Types)generator.Next(2);
-            _color = (Monster.Colors)generator.Next(2);
-            _pattern = (Monster.Patterns)generator.Next(2);
-        }
-
-        public Monster BreedWith(Monster partner)
-        {
+            get { return _name; }
+            set { _name = value; }
 
         }
 
+        public int[] Genes //Värdet av genes kan hämtas utifrån
+        {
+            get { return _genes; }
+
+        }
+
+        public Monster Breed(Monster male, Monster female)
+        {
+            Offspring child = new Offspring();
+
+            for (int i = 0; i < male._genes.Length; i++)
+            {
+                int chanse = generator.Next(1);
+
+                if (generator.Next(1) == 0)
+                {
+                    child._genes[i] = male._genes[i];
+                }
+
+                else
+                {
+                    child._genes[i] = female._genes[i];
+                }
+            }
+
+            return child;
+        }
+
+        public void PrintName()
+        {
+            Console.WriteLine(_name);
+        }
 
         public void PrintAttributes()
         {
