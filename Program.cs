@@ -8,30 +8,28 @@ namespace NovemberProjektet
 {
     class Program
     {
-        public static Random Generator = new Random();
+        public static Random Generator = new Random(); //Används av alla andra klasser
 
         static void Main(string[] args)
         {
-
             MonsterManager.CreateAncestors();
 
-            Console.WriteLine("Select a male");
-            Monster male = MonsterManager.ChooseMonster(Console.ReadLine());
+            while (true)
+            {
+                TextManager.PrintInstruction("Introduction");
 
-            male.PrintAttributes();
+                MonsterManager.PrintMonsters();
 
-            Console.WriteLine("Select a female");
-            Monster female = MonsterManager.ChooseMonster(Console.ReadLine());
+                Monster selectedMonster = MonsterManager.ChooseMonster(Console.ReadLine());
 
-            female.PrintAttributes();
-
-            Monster child = MonsterManager.Breed(male, female);
-
-            child.PrintAttributes();
-
-            Console.ReadLine();
+                TextManager.PrintInstruction("Actions");
+                TextManager.PrintChoises();
 
 
+                MonsterManager.HandleMonsters(Console.ReadLine(), selectedMonster);//Hanterar monster beroende på användarens val
+
+                TextManager.Clear("All");
+            }
 
         }
     }
