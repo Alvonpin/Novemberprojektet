@@ -12,8 +12,8 @@ namespace NovemberProjektet
 
     abstract class Monster 
     { 
-        /* Enums tillåter en strin, i detta fall en egenskap, korrespondera till ett värde. 
-         * På detta vis kan olika egenskaper hos ett monster korrespondera till värdena på dess genetiska uppsättning */
+        /*Enums tillåter en namn, i detta fall en egenskap, korrespondera till ett värde. 
+         *På detta vis kan olika egenskaper hos ett monster korrespondera till värdena på dess genetiska uppsättning */
 
         public enum Genders { male,female }; //Exempel: male har index 0, female har index 1
         public enum Types { bird,reptile,mammal };
